@@ -1,0 +1,247 @@
+/* === General Page Styles === */
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 850px;
+    margin: 20px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.9s ease-in-out;
+}
+
+h1 {
+    font-size: 2.7em;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin-bottom: 35px;
+    color: #666;
+}
+
+
+/* === Buttons === */
+
+.btn {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    margin: 10px;
+    font-size: 1em;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* === Video & Capture Button === */
+
+#cameraFeed {
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 3px solid #2575fc;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    animation: popIn 0.6s ease-in-out;
+}
+
+#captureBtn {
+    margin-top: 15px;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+}
+
+
+/* === Result / AR Info === */
+
+#result,
+#info-box {
+    margin-top: 30px;
+    font-size: 1.1em;
+    color: #444;
+    padding: 18px;
+    background: #f0f9ff;
+    border-radius: 12px;
+    min-height: 60px;
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    text-align: left;
+    line-height: 1.6;
+}
+
+
+/* === AR Info Buttons (on ar.html) === */
+
+.ar-buttons {
+    margin: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.ar-buttons button {
+    background: linear-gradient(135deg, #ff9800, #ffb74d);
+    font-weight: 600;
+}
+
+.ar-buttons button:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* === AR Stage === */
+
+.ar-stage {
+    position: relative;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+#arCamera {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: saturate(1.1) contrast(1.05);
+}
+
+.ar-overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.0) 40%);
+}
+
+.ar-overlay #info-box {
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.ar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+/* Place sections in rows */
+
+.ar-buttons {
+    grid-row: 1;
+}
+
+#info-box {
+    grid-row: 2;
+}
+
+.ar-controls {
+    grid-row: 1;
+    align-self: start;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    pointer-events: none;
+}
+
+
+/* Keep control buttons pinned to edges */
+
+.ar-controls .btn {
+    pointer-events: auto;
+}
+
+.ar-controls .btn:first-child {
+    float: left;
+}
+
+.ar-controls .btn:last-child {
+    float: right;
+}
+
+
+/* === Animations === */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* === Responsive Design === */
+
+@media (max-width: 600px) {
+    .container {
+        margin: 15px;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    .btn {
+        padding: 12px 18px;
+        font-size: 0.9em;
+    }
+    #cameraFeed {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.gradient-text {
+    display: inline-block;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* fallback */
+}

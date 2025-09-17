@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site_name }} - AR View</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="site-name" class="gradient-text">{{ site_name }}</h1>
+
+        <!-- AR Stage -->
+        <div class="ar-stage">
+            <video id="arCamera" autoplay playsinline muted></video>
+
+            <div class="ar-overlay">
+                <div class="ar-buttons">
+                    <button onclick="showInfo('history')">History</button>
+                    <button onclick="showInfo('overview')">Overview</button>
+                    <button onclick="showInfo('facts')">Facts</button>
+                    <button onclick="showInfo('video')">Video</button>
+                </div>
+
+                <div id="info-box">Select an option to explore.</div>
+
+                <div class="ar-controls">
+                    <button class="btn" onclick="goBack()">⬅ Go Back</button>
+                    <button class="btn" onclick="stopAR()">Stop AR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch("/site/{{ site_name }}")
+            .then(res => res.json())
+            .then(data => {
+                window.siteData = data;
+            })
+            .catch(err => console.error(err));
+
+        // Auto start AR camera on load
+        window.addEventListener('DOMContentLoaded', () => {
+            startAR();
+        });
+    </script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>

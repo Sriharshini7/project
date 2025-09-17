@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Heritage Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="gradient-text">Cultural Heritage AR</h1>
+        <p class="subtitle">Explore history through Augmented Reality</p>
+
+        <!-- Camera Button -->
+        <button class="btn" onclick="openCamera()">Scan with Camera</button>
+
+        <!-- Gallery Upload Button -->
+        <button class="btn" onclick="document.getElementById('galleryInput').click()">Upload from Gallery</button>
+        <!-- Hidden File Input -->
+        <input type="file" id="galleryInput" accept="image/*" style="display:none" onchange="handleGalleryUpload(event)">
+
+        <!-- Camera Feed (hidden initially) -->
+        <video id="cameraFeed" autoplay playsinline style="display:none; width:100%; max-width:500px;"></video>
+        <button id="captureBtn" class="btn" onclick="captureImage()" style="display:none;">Capture</button>
+
+        <!-- Result (AR/Not Found) will be displayed here -->
+        <div id="result"></div>
+        <div id="upload-status" style="display:none; margin-top:10px; color:#555;">Working in process…</div>
+        
+    </div>
+    
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
